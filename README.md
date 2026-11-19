@@ -1,6 +1,6 @@
 # M3DLIB for PSP 
   
-![screenshot](IMAGES/M3D.png)
+![screenshot](assets/images/M3D.png)
 
 [BUG]: on PPSSPP Linux many samples will fail because I tested them on windows and I did not realize Linux is case sensitive. 
 
@@ -13,11 +13,11 @@ The base for this project started as part of ONELua for PSP, so this was possibl
   
 I just wanted to create an engine easy to use, and powerful enough to create things you can call "games" for PSP.  
   
-**<ins>OSLIB:</ins>** Unchanged as it was in late 2024, I include a copy here, in M3D_LIBS folder.  
+**<ins>OSLIB:</ins>** Unchanged as it was in late 2024, I include a copy here, in `lib` folder.  
 If you want to access all OSL functions, just "#include <oslib/oslib.h>".  
 This M3D warpper does not implemet any wifi/network/load/save functions, you can use OSL ones.  
   
-**<ins>BULLET:</ins>** Version 2.82-r2704, I also include it in M3D_LIBS folder.  
+**<ins>BULLET:</ins>** Version 2.82-r2704, I also include it in `lib` folder.  
   
 **<ins>AMGLib:</ins>** This is a heavily modified version of the original, I added a lot of functions here.  
 Thanks again to Andresmargar for creating this.  
@@ -30,7 +30,7 @@ Thanks again to Andresmargar for creating this.
 ## FUNCTIONS  
 
 I don't want to create a complex doc because functions are not complex at all, that was the point of doing this.  
-So this is a brief description of everything M3D does. For more details, **read the samples and M3D.h file (M3D_LIBS/release/include or M3D_LIBS/AMGLib)**.
+So this is a brief description of everything M3D does. For more details, **read the samples and M3D.h file (lib/release/include or lib/AMGLib)**.
   
 **<ins>LOADING FUNCTIONS:</ins>** for images/fonts, maps, music, models.  
 **<ins>VFPU MATH FUNCTIONS:</ins>** like sin, cos etc.  
@@ -46,7 +46,7 @@ So this is a brief description of everything M3D does. For more details, **read 
 **<ins>FAKE BUMP MAPPING:</ins>** A simulation of modern shaders using paletted textures, only works well on mostly flat surfaces.  
 **<ins>3D NURBS:</ins>** PSP can generate a surface from several points you can animate, I added this because I think it looks ok for simple water simulations.   
 **<ins>TV OUT:</ins>** You can enable TV OUT mode (on PSP 2000+), it will output a 720x480 image. This will be slow unless you use 4444, 5551 or 5650 modes.
-You need the file "dvemgr.prx" in the same folder as the EBOOT.PBP to enable TV-OUT. I could recompile dvemgr.prx from the source (in M3D_LIBS) But it does not work well, so use the one found inside many samples (there is also a copy in M3D_LIBS called "dvemgr_WORKS.prx").  
+You need the file "dvemgr.prx" in the same folder as the EBOOT.PBP to enable TV-OUT. I could recompile dvemgr.prx from the source (in `lib`) But it does not work well, so use the one found inside many samples (there is also a copy in `lib` called "dvemgr_WORKS.prx").  
 **<ins>UNLOAD FUNCTIONS:</ins>** All files / structures have now unload functions with no memory leaks.  
 **<ins>LOADING SCREEN:</ins>** I created a simple loading screen function (M3D_Loading_Start(); M3D_Loading_Stop();) which uses an animated sprite rendered in a separate thread.   
 **<ins>DELAY:</ins>** A function to pause the program for a period of time in seconds. 
@@ -55,34 +55,34 @@ You need the file "dvemgr.prx" in the same folder as the EBOOT.PBP to enable TV-
 ## SOME TESTS
   
 MULTITEXTURE SAMPLE:  
-![screenshot](IMAGES/multitexture.gif) 
+![screenshot](assets/imagesmultitexture.gif) 
   
 NURBS SURFACE:  
-![screenshot](IMAGES/nurbs.png)
+![screenshot](assets/imagesnurbs.png)
   
 PHYSICS TEST:  
-![screenshot](IMAGES/physics.png)
+![screenshot](assets/imagesphysics.png)
 
 SKINNED MODEL:  
-![screenshot](IMAGES/dino.gif)  
+![screenshot](assets/imagesdino.gif)  
 
 RENDER TO TEXTURE (CRT models from N64's tiny3D engine):  
-![screenshot](IMAGES/rendertexture.png)  
+![screenshot](assets/imagesrendertexture.png)  
 
 TV-OUT OSLIB MAPS + SPRITES (captured on PPSSPP debugger, which sometimes shows correctly the 768x480 TV-OUT framebuffer):  
-![screenshot](IMAGES/maps720x480.png)
+![screenshot](assets/imagesmaps720x480.png)
 
 TV OUT IN 3D MODE:  
-![screenshot](IMAGES/3d.png)  
+![screenshot](assets/images3d.png)  
 
 ## INSTALL & TEST
   
-Copy M3D_LIBS/release/lib/libM3D.a to pspsdk libs folder, and M3D_LIBS/release/include/M3D.h to include folder.
-In windows you can use "install.bat" inside M3D_LIBS folder (edit the file and configure
+Copy `lib/release/lib/libM3D.a` to `pspsdk` libs folder, and `lib/release/include/M3D.h` to include folder.
+In windows you can use "install.bat" inside `lib` folder (edit the file and configure
 your PSPSDKDIR first).  
    
 To compile the samples or create your programs, run make inside any sample folder, 
-or run compile_WSL.bat in windows. You need the last pspsdk (2025) which was only releassed 
+or run `compile_WSL.bat` in windows. You need the last pspsdk (2025) which was only releassed 
 for linux. If you use windows most computers can run WSL1 from windows (WSL 1 is fast). 
 If your PC is very old and can't run WSL, just install linux, or use a virtual machine with 
 any linux distrubution. If you use mac, I can't help you.  
