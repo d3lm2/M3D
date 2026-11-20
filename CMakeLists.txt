@@ -5,8 +5,6 @@ set(CMAKE_SYSTEM_CMAKE_PLATFORM_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 project(M3D C CXX ASM)
 
-subdirs(external/oslib)
-
 # Always export a compilation database; run-cppcheck.sh analyses through it.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -27,7 +25,7 @@ set_target_properties(${TARGET_LIB} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
 
-# Include directories
+
 include_directories(
     INTERFACE PUBLIC_HEADER  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     src
