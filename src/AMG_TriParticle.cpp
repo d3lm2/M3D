@@ -18,7 +18,7 @@
 #include <psprtc.h>
 #include <psptypes.h>
 
-#include "AMG_triParticle.h"
+#include "AMG_TriParticle.h"
 #include "AMG_Model.h"
 #include "AMG_Physics.h"	// + AMG_Texture.h
 #include "AMG_Multimedia.h"

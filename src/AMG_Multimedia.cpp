@@ -370,7 +370,7 @@ void AMG_Play_FullScreen_AVI(char *path, int loop, u32 button){
 			//sceGuSync(0,0);
 			
 			//decode
-			sceJpegDecodeMJpeg(MJPEG_frame,AVI_Width*AVI_Height,(void*)((u32)0x04000000+(u32)framebuffer),MJPEG_unknown);
+			sceJpegDecodeMJpeg(MJPEG_frame,AVI_Width*AVI_Height,(u8*)((u32)0x04000000+(u32)framebuffer),MJPEG_unknown);
 			sceDisplayWaitVblankStart();
 			framebuffer = sceGuSwapBuffers();
 			//sceGuStart(GU_DIRECT,AVI_list);
@@ -448,7 +448,7 @@ int render_avi_totexture(SceSize args, void *argp){
 			sceIoLseek32(AVI_Tex_Handle,AVI_MJPEG_Offsets[AVI_Frame],SEEK_SET);
 			sceIoRead(AVI_Tex_Handle,MJPEG_frame,AVI_MJPEG_Offsets[AVI_Frame+1]);
 			//decode
-			sceJpegDecodeMJpeg(MJPEG_frame,AVI_Width*AVI_Height,AVI_Tex_Target,MJPEG_unknown);
+			sceJpegDecodeMJpeg(MJPEG_frame,AVI_Width*AVI_Height,(u8*)AVI_Tex_Target,MJPEG_unknown);
 			AVI_Frame+=2;
 			//loop
 			if (AVI_Tex_Loop & (AVI_Frame == AVI_TotalFrames*2)) AVI_Frame = 0;
